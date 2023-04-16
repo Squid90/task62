@@ -1,24 +1,44 @@
 import orderByProps from '../game';
 
 const expected = [
-  { key: 'name', value: 'мечник' },
-  { key: 'level', value: 2 },
-  { key: 'attack', value: 80 },
-  { key: 'defence', value: 40 },
-  { key: 'health', value: 10 },
+  {
+    id: 8,
+    name: 'Двойной выстрел',
+    description: 'Двойной выстрел наносит двойной урон',
+    icon: 'http://...',
+  },
+  {
+    id: 9,
+    name: 'Нокаутирующий удар',
+    description: 'Описание недоступно',
+    icon: 'http://...',
+  },
 ];
 
 // eslint-disable-next-line
-test('Проверка вывода корректной карточки персонажа', () => {
-  const personCard = {
-    name: 'мечник',
-    health: 10,
-    level: 2,
-    attack: 80,
-    defence: 40,
+test('Проверка вывода способностей в бою', () => {
+  const character = {
+    name: 'Лучник',
+    type: 'Bowman',
+    health: 50,
+    level: 3,
+    attack: 40,
+    defence: 10,
+    special: [
+      {
+        id: 8,
+        name: 'Двойной выстрел',
+        icon: 'http://...',
+        description: 'Двойной выстрел наносит двойной урон',
+      },
+      {
+        id: 9,
+        name: 'Нокаутирующий удар',
+        icon: 'http://...',
+      },
+    ],
   };
-  const sortItems = ['name', 'level'];
-  const currentCard = orderByProps(personCard, sortItems);
+  const currentSpecial = orderByProps(character);
   // eslint-disable-next-line
-  expect(expected).toEqual(currentCard);
+  expect(expected).toEqual(currentSpecial);
 });

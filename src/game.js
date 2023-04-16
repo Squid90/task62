@@ -1,24 +1,16 @@
-export default function orderByProps(obj, sortItems) {
-  const personCard = [];
-  for (const key in obj) {
-    if (key !== sortItems[0] && key !== sortItems[1]) {
-      personCard.push({ key, value: obj[key] });
-    }
+export default function showFightingCard(character) {
+  const fightingCard = [];
+
+  for (let i = 0; i < character.special.length; i += 1) {
+    const {
+      special: { [i]: { id } },
+      special: { [i]: { name } },
+      special: { [i]: { description = 'Описание недоступно' } },
+      special: { [i]: { icon } },
+    } = character;
+    fightingCard.push({
+      id, name, description, icon,
+    });
   }
-
-  personCard.sort((a, b) => (a.key > b.key ? 1 : -1));
-
-  for (const key in obj) {
-    if (key === sortItems[1]) {
-      personCard.unshift({ key, value: obj[key] });
-    }
-  }
-
-  for (const key in obj) {
-    if (key === sortItems[0]) {
-      personCard.unshift({ key, value: obj[key] });
-    }
-  }
-
-  return personCard;
+  return fightingCard;
 }
