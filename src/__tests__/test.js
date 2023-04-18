@@ -1,4 +1,4 @@
-import orderByProps from '../game';
+import showFightingCard from '../game';
 
 const expected = [
   {
@@ -38,7 +38,7 @@ test('Проверка вывода способностей в бою', () => {
       },
     ],
   };
-  const currentSpecial = orderByProps(character);
+  const currentSpecial = showFightingCard(character);
   // eslint-disable-next-line
   expect(expected).toEqual(currentSpecial);
 });
